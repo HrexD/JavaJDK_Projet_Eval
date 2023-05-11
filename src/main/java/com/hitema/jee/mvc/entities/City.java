@@ -6,11 +6,11 @@ import java.sql.Blob;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="city")
+    @Table(name="city")
 public class City {
     @Id
-    @Column(name = "city_id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+        @Column(name = "city_id")
+            @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String city;
 
@@ -18,12 +18,13 @@ public class City {
     // Eager -> Les associations sont résolues au momment de l'accès sur l'entité
 
     @ManyToOne
-    @JoinColumn(name="country_id")
+        @JoinColumn(name="country_id")
     private Country country;
 
     private Boolean capital;
 
-    // private Blob image;
+    @Lob
+    private byte[] image;
 
     @Column(name="last_update")
     private LocalDateTime lastUpdate;
